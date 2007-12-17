@@ -6,7 +6,6 @@ Group:		Graphical desktop/KDE
 Source0: 	drakclick
 License:	GPL
 URL:		http://www.advx.org/drakclick
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildArch: 	noarch
 
 %description
