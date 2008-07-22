@@ -1,7 +1,7 @@
 Summary:	A program to change Single/Double click in KDE
 Name:		drakclick
 Version:	0.2
-Release:	%mkrel 4
+Release:	%mkrel 6
 Group:		Graphical desktop/KDE
 Source0: 	drakclick
 License:	GPL
