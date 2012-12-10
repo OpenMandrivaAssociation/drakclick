@@ -32,3 +32,37 @@ EOF
 %{_docdir}/drakclick-%{version}
 
 
+
+
+%changelog
+* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 0.2-8mdv2011.0
++ Revision: 617891
+- the mass rebuild of 2010.0 packages
+
+* Thu Sep 03 2009 Thierry Vignaud <tv@mandriva.org> 0.2-7mdv2010.0
++ Revision: 428335
+- rebuild
+
+* Tue Jul 22 2008 Thierry Vignaud <tv@mandriva.org> 0.2-6mdv2009.0
++ Revision: 240634
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Sun Sep 16 2007 Thierry Vignaud <tv@mandriva.org> 0.2-4mdv2008.0
++ Revision: 87578
+- kill dead email
+
+
+* Fri Jan 26 2007 Oden Eriksson <oeriksson@mandriva.com> 0.2-3mdv2007.0
++ Revision: 113864
+- Import drakclick
+
+* Fri Jan 26 2007 Oden Eriksson <oeriksson@mandriva.com> 0.2-3mdv2007.1
+- rebuild
+
+* Sun Dec 25 2005 Oden Eriksson <oeriksson@mandriva.com> 0.2-2mdk
+- rebuild
+

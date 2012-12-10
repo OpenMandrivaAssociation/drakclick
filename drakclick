@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+
+#use strict;
+#use diagnostics;
+use lib qw(/usr/lib/libDrakX);
+use standalone;
+use common;
+use interactive;
+
+my $in = interactive->vnew();
+
+my $DIR = $ENV{HOME}."/.kde/share/config";
+my $file = "$DIR/kdeglobals";
+my $value = {getVarsFromSh($file)}->{SingleClick};
+
+my %values = ('false' => N("Double Click (as in Windows, Gnome or Mac)"),
+              'true'  => N("Single Click (click once like a web page)"),
+             );
+
+if ($in->ask_from("DrakClick", 
+                  formatAlaTeX(N("Welcome to the DrakClick configurator. Please choose between:")),
+                  [
+                   {
+                    list => [ sort keys %values ],
+                    val => \$value,
+                    type => 'list',
+                    format => sub { $values{$_[0]} },
+                    sort => 1,
+                   }
+                  ]
+                 )
+   ) {
+    my $inkde = 0;
+    `date +%Y%m%d-%T`;
+    chop;
+    s/:/./g;
+    my $dat = $_;
+    my $BAKDIR = "$DIR/bak";
+    system("mkdir -p $BAKDIR; touch $file; cp -f $file $BAKDIR/kdeglobals.$dat");
+    substInFile { s/SingleClick=.*$/SingleClick=$value/ } $file;
+    print "alterint \"$file\"\n";
+    my $pid = join(' ', split("\n", `ps aux|grep kdeinit|grep kdesktop|cut -c10-14`));
+    # do not fsck up when launched from !KDE
+    system("kill $pid; kdeinit kdesktop >/dev/null 2>/dev/null") if !$::testing && $pid;
+}
+
+$in->exit(0);
